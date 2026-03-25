@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bright Horizons</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/contact.css">
+    </head>
+    <body>
+        <nav>
+            <div class="container nav__container">
+                <a href="index.html"><h4>Bright Horizons</h4></a>
+                <ul class="nav__menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Course</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button id="open-menu-btn"><i class="fa-solid fa-bars"></i></button>
+                <button id="close-menu-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </nav>
+
+
+
+
+
+<section class="contact">
+    <div class="container contact__container">
+        <aside class="contact__aside">
+            <div class="aside__image">
+                <img src="./pics/contact.jpg">
+            </div>
+            <h2>Contact Us</h2>
+            <ul class="contact__details">
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <h5>09623865592</h5>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <h5>info.brighthorizonslc@gmail.com</h5>
+                </li>
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h5>Blk 1 Lot 1 Las Palmas Subdivision Caypombo Sta Maria</h5>
+                </li>
+            </ul>
+            <ul class="contact__socials">
+                <li><a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+        </aside>
+
+
+        <form action="https://formspree.io/f/meozjplp" method="POST" class="contact__form">
+            <div class="form__name">
+                <input type="text" name="First Name" placeholder="First Name" required>
+                <input type="text" name="Last Name" placeholder="Last Name" required>
+            </div>
+                <input type="email" name="Email Address" placeholder="Your Email Address" required>
+                <textarea name="Message" rows="7" placeholder="Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+
+
+    </div>
+</section>
+
+
+
+
+
+<footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__1">
+            <a href="index.html" class="footer__logo"><h4>Bright Horizons</h4></a>
+            <p>
+                Block 1 Lot 1 Las Palmas Subdivision Caypombo Sta Maria Bulacan
+            </p>
+        </div>
+
+        <div class="footer__2">
+            <ul class="permalinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__4">
+            <h4>Contact Us</h4>
+            <div class="footer__contact-info">
+                <p>09623865592</p>
+                <p>info.brighthorizonslc@gmail.com</p>
+            </div>
+            <ul class="footer__socials">
+                <li>
+                    <a href="https://www.facebook.com/profile.php?id=61565478814864" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       onclick="window.open(this.href,'_blank');return false;">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/brighthorizonslearningcenter/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       onclick="window.open(this.href,'_blank');return false;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>    
+<script type="module" src="./js/main.js"></script>
+
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        600: {
+            slidesPerView: 2
+        }
+      }
+    });
+  </script>
+
+
+    </body>
+</html>
