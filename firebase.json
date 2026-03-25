@@ -1,0 +1,29 @@
+{
+  "firestore": {
+    "database": "(default)",
+    "location": "asia-southeast1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "predeploy": ["npm run copy-admin"],
+    "rewrites": [
+      {
+        "source": "/admin",
+        "destination": "/admin/login.html"
+      },
+      {
+        "source": "/admin/",
+        "destination": "/admin/login.html"
+      },
+      {
+        "source": "/admin/**",
+        "destination": "/admin/login.html"
+      }
+    ]
+  }
+}
+
