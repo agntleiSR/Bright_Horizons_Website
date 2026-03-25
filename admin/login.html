@@ -1,0 +1,77 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/admin/css/login.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="nav-container">
+<h2>Bright Horizons Admin</h2>
+</div>
+</nav>
+
+
+<!-- LOGIN BOX -->
+
+<div class="container">
+
+<h2>Admin Login</h2>
+
+<input id="email" placeholder="Admin Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+
+<script type="module">
+
+import { auth } from "/js/firebase-config.js";
+import {
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+// Do not auto-redirect; user must enter credentials to proceed
+
+window.login = async function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    window.location.href = "/admin/dashboard.html";
+  } catch (error) {
+    console.error("Login Failed", error);
+    alert("Login failed: " + (error.message || "check credentials"));
+  }
+};
+
+</script>
+
+</body>
+</html>
+```
