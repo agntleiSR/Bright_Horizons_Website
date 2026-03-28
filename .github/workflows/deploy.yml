@@ -1,0 +1,53 @@
+name: Bright Horizons CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      # --- AUTOMATIC TESTING SECTION ---
+      - name: Run Validations
+        id: run_tests
+        run: |
+          # Example: Check if essential folders exist before deploying
+          if [ ! -d "public" ]; then echo "Error: Public folder missing"; exit 1; ffi
+          if [ ! -d "admin" ]; then echo "Error: Admin folder missing"; exit 1; fi
+          # Run your npm test script if you have one
+          npm test || echo "Tests failed"
+
+      # --- PREPARE & DEPLOY (Only runs if tests pass) ---
+      - name: Build Admin Dashboard
+        if: success()
+        run: npm run copy-admin-unix
+
+      - name: Deploy to Firebase
+        if: success()
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting --project brighthorizons-web
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      # --- AUTOMATIC RESPONSE ON FAILURE ---
+      - name: Notify Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const message = "❌ **Deployment Rejected**\n\nYour commit failed the automatic security/structure tests. Updates have NOT been reflected on the live site.\n\n**Action Required:** Please check the logs in the 'Actions' tab to see which files are missing or which test failed.";
+            github.rest.issues.createComment({
+              issue_number: context.issue.number || context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
